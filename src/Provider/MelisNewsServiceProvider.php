@@ -1,11 +1,13 @@
 <?php
-namespace Silex\Provider;
+namespace MelisPlatformFrameworkSilex\Provider;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Silex\Api\BootableProviderInterface;
+use Silex\Application;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
 
-class MelisNewsServiceProvider implements ServiceProviderInterface
+class MelisNewsServiceProvider implements BootableProviderInterface,ServiceProviderInterface
 {
 
     public function register(Container $app)
@@ -36,5 +38,19 @@ class MelisNewsServiceProvider implements ServiceProviderInterface
 
             return $news;
         };
+    }
+
+    /**
+     * Bootstraps the application.
+     *
+     * This method is called after all services are registered
+     * and should be used for "dynamic" configuration (whenever
+     * a service must be requested).
+     *
+     * @param Application $app
+     */
+    public function boot(Application $app)
+    {
+        // TODO: Implement boot() method.
     }
 }
