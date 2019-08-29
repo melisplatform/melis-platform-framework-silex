@@ -3,10 +3,10 @@
   "description": "A Silex framework dependecy to for running silex inside Melis Platform",
   "type": "melisplatform-module",
   "license": "OSL-3.0",
-  "homepage": "https://github.com/melisplatform/melis-platform-framework-laravel",
+  "homepage": "https://github.com/melisplatform/melis-platform-framework-silex",
   "support": {
-    "source": "https://github.com/melisplatform/melis-platform-framework-laravel",
-    "issues": "https://github.com/melisplatform/melis-platform-framework-laravel/issues"
+    "source": "https://github.com/melisplatform/melis-platform-framework-silex",
+    "issues": "https://github.com/melisplatform/melis-platform-framework-silex/issues"
   },
   "keywords": [
     "cms",
@@ -45,7 +45,7 @@
     "sort-packages": true
   },
   "extra": {
-    "laravel": {
+    "silex": {
       "dont-discover": []
     }
   },
