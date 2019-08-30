@@ -29,7 +29,8 @@
     "symfony/security": "^4.3",
     "symfony/translation": "^4.3",
     "symfony/twig-bridge": "^4.3",
-    "symfony/validator": "^4.3"
+    "symfony/validator": "^4.3",
+    "melisplatform/melis-platform-frameworks": "*"
   },
   "config": {
     "optimize-autoloader": true,
