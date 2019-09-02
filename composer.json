@@ -28,7 +28,7 @@
     "symfony/monolog-bridge": "4.3.*",
     "symfony/security": "4.3.*",
     "symfony/translation": "4.3.*",
-    "symfony/twig-bridge": "4.3.*",
+    "symfony/twig-bridge": "3.0.*",
     "symfony/validator": "4.3.*",
     "melisplatform/melis-platform-frameworks": "*"
   },
