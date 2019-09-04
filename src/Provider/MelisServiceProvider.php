@@ -39,44 +39,44 @@ class MelisServiceProvider implements ServiceProviderInterface, BootableProvider
          * DATABASE CONFIGURATION
          * Configuring Silex DB using Melis Platform DB configurations.
          */
-        #Getting DB configurations from Melis Platform
-        $dbConfig = include __DIR__ .  '/../../../../../config/autoload/platforms/' . getenv('MELIS_PLATFORM') . '.php';
-        $dsn = str_getcsv($dbConfig['db']['dsn'],";");
-        foreach ($dsn as $key => $config){
-            if(strpos($config, ':') !== false)
-                $data = explode("=",explode(":",$config)[1]);
-            else
-                $data = explode("=",$config);
-
-            $dbConfig['db'][$data[0]] = $data[1];
-        }
-
-        #Getting pre configured DB configurations
-        $dbObtions = isset($app['db.options']) ? $app['db.options'] : (isset($app['dbs.options']) ? $app['dbs.options'] : []);
-
-        #Preparing DB configurations from the Melis Platform
-        $melisDBOptions = array(
-            'melis' => array(
-                'driver'   => 'pdo_mysql',
-                'host'      => $dbConfig['db']['host'],
-                'dbname'    => $dbConfig['db']['dbname'],
-                'user'      => $dbConfig['db']['username'],
-                'password'  => $dbConfig['db']['password'],
-                'charset'   => $dbConfig['db']['charset'],
-            )
-        );
-
-        if (count($dbObtions) == count($dbObtions, COUNT_RECURSIVE)){
-            #Merging Silex DB Configuration if Silex has SINGLE DB configuration
-            $melisDBOptions['silex'] = $dbObtions;
-        }else{
-            #Merging Silex DB Configuration if Silex has MULTIPLE DB configuration
-            foreach(array_reverse($dbObtions[0],true) as $key => $dbObtion){
-                $melisDBOptions[$key] = $dbObtion;
-            }
-        }
-        $melisDBOptions = array_reverse($melisDBOptions);
-
-        $app['dbs.options'] = $melisDBOptions;
+//        #Getting DB configurations from Melis Platform
+//        $dbConfig = include __DIR__ .  '/../../../../../config/autoload/platforms/' . getenv('MELIS_PLATFORM') . '.php';
+//        $dsn = str_getcsv($dbConfig['db']['dsn'],";");
+//        foreach ($dsn as $key => $config){
+//            if(strpos($config, ':') !== false)
+//                $data = explode("=",explode(":",$config)[1]);
+//            else
+//                $data = explode("=",$config);
+//
+//            $dbConfig['db'][$data[0]] = $data[1];
+//        }
+//
+//        #Getting pre configured DB configurations
+//        $dbObtions = isset($app['db.options']) ? $app['db.options'] : (isset($app['dbs.options']) ? $app['dbs.options'] : []);
+//
+//        #Preparing DB configurations from the Melis Platform
+//        $melisDBOptions = array(
+//            'melis' => array(
+//                'driver'   => 'pdo_mysql',
+//                'host'      => $dbConfig['db']['host'],
+//                'dbname'    => $dbConfig['db']['dbname'],
+//                'user'      => $dbConfig['db']['username'],
+//                'password'  => $dbConfig['db']['password'],
+//                'charset'   => $dbConfig['db']['charset'],
+//            )
+//        );
+//
+//        if (count($dbObtions) == count($dbObtions, COUNT_RECURSIVE)){
+//            #Merging Silex DB Configuration if Silex has SINGLE DB configuration
+//            $melisDBOptions['silex'] = $dbObtions;
+//        }else{
+//            #Merging Silex DB Configuration if Silex has MULTIPLE DB configuration
+//            foreach(array_reverse($dbObtions[0],true) as $key => $dbObtion){
+//                $melisDBOptions[$key] = $dbObtion;
+//            }
+//        }
+//        $melisDBOptions = array_reverse($melisDBOptions);
+//
+//        $app['dbs.options'] = $melisDBOptions;
     }
 }
