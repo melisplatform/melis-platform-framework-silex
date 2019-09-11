@@ -34,7 +34,7 @@
     "symfony/translation": "~2.8|^3.0",
     "symfony/twig-bridge": "~2.8|^3.0",
     "symfony/validator": "~2.8|^3.0",
-    "melisplatform/melis-platform-frameworks": "*"
+    "melisplatform/melis-platform-frameworks": "dev-master"
   },
   "config": {
     "optimize-autoloader": true,
