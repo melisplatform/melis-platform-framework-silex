@@ -47,7 +47,6 @@
     }
   },
   "minimum-stability": "dev",
-  "prepare-stable": true,
   "autoload": {
         "psr-4": {
             "MelisPlatformFrameworkSilex\\": "src/"
