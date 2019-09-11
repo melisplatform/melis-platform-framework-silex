@@ -28,7 +28,7 @@
     "symfony/form": "^4.2",
     "symfony/monolog-bridge": "^4.2",
     "symfony/security": "^4.2",
-    "symfony/translation": "^4.2",
+    "symfony/translation": "^4.4",
     "symfony/twig-bridge": "^4.2",
     "symfony/validator": "^4.2",
     "melisplatform/melis-platform-frameworks": "^3.1"
