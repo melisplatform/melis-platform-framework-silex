@@ -15,7 +15,10 @@
     "module"
   ],
   "require": {
-    
+    "doctrine/dbal": "~2.2",
+    "twig/twig": "^2.11",
+    "silex/silex": "~2.0",
+    "silex/web-profiler": "~2.0",
   },
   "config": {
     "optimize-autoloader": true,
