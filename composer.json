@@ -27,7 +27,10 @@
     "symfony/debug": "^4.2",
     "symfony/form": "^4.2",
     "symfony/monolog-bridge": "^4.2",
-    "symfony/security": "^4.2"
+    "symfony/security": "^4.2",
+    "symfony/translation": "^4.2",
+    "symfony/twig-bridge": "^4.2",
+    "symfony/validator": "^4.2"
   },
   "config": {
     "optimize-autoloader": true,
