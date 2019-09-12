@@ -24,6 +24,10 @@
     "symfony/class-loader": "^3.4.0",
     "symfony/config": "^4.2.0",
     "symfony/css-selector": "^4.2.0",
+    "symfony/debug": "^4.2.0",
+    "symfony/form": "^4.2.0",
+    "symfony/monolog-bridge": "^4.2.0",
+    "symfony/security": "^4.2.0"
   },
   "config": {
     "optimize-autoloader": true,
