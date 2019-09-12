@@ -18,7 +18,8 @@
     "doctrine/dbal": "~2.2",
     "twig/twig": "^2.11",
     "silex/silex": "~2.0",
-    "silex/web-profiler": "~2.0"
+    "silex/web-profiler": "~2.0",
+    "symfony/asset": "^4.2"
   },
   "config": {
     "optimize-autoloader": true,
