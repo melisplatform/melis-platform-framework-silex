@@ -1,5 +1,5 @@
 <?php
-namespace MelisPlatformFrameworkSilex;
+namespace MelisPlatformFrameworkSilex\Service;
 
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;

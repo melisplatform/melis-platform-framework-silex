@@ -1,7 +1,7 @@
 <?php
 namespace MelisPlatformFrameworkSilex\Provider;
 
-use MelisPlatformFrameworkSilex\MelisServices;
+use MelisPlatformFrameworkSilex\Service\MelisServices;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Silex\Api\BootableProviderInterface;
