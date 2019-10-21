@@ -31,7 +31,7 @@
     "symfony/translation": "^4.2",
     "symfony/twig-bridge": "^3.0",
     "symfony/validator": "^4.2",
-    "melisplatform/melis-platform-frameworks": "^3.1"
+    "melisplatform/melis-platform-frameworks": "*"
   },
   "config": {
     "optimize-autoloader": true,
