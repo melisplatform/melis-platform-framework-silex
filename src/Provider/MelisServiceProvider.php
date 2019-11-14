@@ -2,10 +2,12 @@
 namespace MelisPlatformFrameworkSilex\Provider;
 
 use MelisPlatformFrameworkSilex\Service\MelisServices;
+use MelisPlatformFrameworkSilex\Twig\Extension\MelisViewHelperTwigExtension;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Silex\Api\BootableProviderInterface;
 use Silex\Application;
+use Twig\TwigFunction;
 
 class MelisServiceProvider implements ServiceProviderInterface, BootableProviderInterface
 {
@@ -78,5 +80,14 @@ class MelisServiceProvider implements ServiceProviderInterface, BootableProvider
         $melisDBOptions = array_reverse($melisDBOptions);
 
         $app['dbs.options'] = $melisDBOptions;
+
+        $app->extend('twig', function($twig, $app) {
+            $twig->addExtension( new MelisViewHelperTwigExtension($app));
+            return $twig;
+        });
+    }
+
+    public function hello($name){
+        return "<h1>HELLO $name</h1>";
     }
 }

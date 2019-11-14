@@ -1,7 +1,7 @@
 <?php
 namespace MelisPlatformFrameworkSilex\Service;
 
-use Zend\Mvc\Service\ServiceManagerConfig;
+use Zend\Mvc\Application;
 use Zend\ServiceManager\ServiceManager;
 
 class MelisServices
@@ -42,13 +42,11 @@ class MelisServices
     protected function initServiceManager()
     {
         $appConfig = $this->getMelisAppPathConfig();
-        $serviceManagerConfig = isset($appConfig['service_manager']) ? $appConfig['service_manager'] : [];
-        // init service manager
-        $serviceManager = new ServiceManager(new ServiceManagerConfig($serviceManagerConfig));
-        // set service application config
-        $serviceManager->setService('ApplicationCOnfig', $appConfig);
-        // load modules
-        $serviceManager->get('ModuleManager')->loadModules();
-        return $serviceManager;
+
+        $serviceMnager = null;
+        // get the zend application
+        $zendApplication = Application::init($appConfig);
+
+        return $zendApplication->getServiceManager();
     }
 }
