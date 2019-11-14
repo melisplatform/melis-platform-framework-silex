@@ -32,6 +32,17 @@ class MelisViewHelperTwigExtension extends \Twig_Extension
             )
         ];
     }
+
+    /**
+     * This function returns the zend view helper called in the twig template as a twig function.
+     *
+     * @param $helperName string name of the helper
+     * @param null $functionName string function of the helper if it has
+     * @param null $params mixed parameters of the function for the called helper
+     * @return mixed|string
+     * @throws \Exception
+     * @internal param null $functionNam
+     */
     public function getMelisViewHelpers($helperName, $functionName = null, $params = null){
         $melisServiceAdaptor = new MelisServices();
         $viewHelperManager = $melisServiceAdaptor->getService("viewhelpermanager");

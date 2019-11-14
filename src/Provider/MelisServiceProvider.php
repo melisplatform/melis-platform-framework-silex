@@ -81,13 +81,10 @@ class MelisServiceProvider implements ServiceProviderInterface, BootableProvider
 
         $app['dbs.options'] = $melisDBOptions;
 
+        //the block of code below is for adding Melis Zend View Helpers as a Twig Function Extension.
         $app->extend('twig', function($twig, $app) {
             $twig->addExtension( new MelisViewHelperTwigExtension($app));
             return $twig;
         });
-    }
-
-    public function hello($name){
-        return "<h1>HELLO $name</h1>";
     }
 }
