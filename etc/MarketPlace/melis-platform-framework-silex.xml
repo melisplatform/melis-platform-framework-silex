@@ -1,0 +1,20 @@
+<melis-platform-framework-silex>
+	<package_info>
+		<mp_title>Melis Platform Framework Silex</mp_title>
+		<mp_subtitle>Melis Platform Framework Silex</mp_subtitle>
+		<mp_description>
+			<![CDATA[
+				<p>This module is developed in Silex and adds tools and components for your Silex project to access the services and datas of MelisPlatform</p>
+			]]>
+		</mp_description>
+		<mp_maintainers>melisplatform</mp_maintainers>
+		<mp_group>Melis Core</mp_group>
+	</package_info>
+	<package_images>
+		<img_1>
+			<mpi_image_title>Silex Framework</mpi_image_title>
+			<mpi_image_file>silex.jpg</mpi_image_file>
+			<mpi_image_main>1</mpi_image_main>
+		</img_1>
+	</package_images>
+</melis-platform-framework-silex>
