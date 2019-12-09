@@ -41,7 +41,9 @@
   "extra": {
     "silex": {
       "dont-discover": []
-    }
+    },
+    "melis-module": false,
+    "module-name": "MelisPlatformFrameworkSilex"
   },
   "autoload": {
         "psr-4": {
