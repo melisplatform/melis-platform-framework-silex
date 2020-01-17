@@ -2,11 +2,13 @@
 namespace MelisPlatformFrameworkSilex\Provider;
 
 use MelisPlatformFrameworkSilex\Service\MelisServices;
+use MelisPlatformFrameworkSilex\Service\MelisSilexToolCreatorService;
 use MelisPlatformFrameworkSilex\Twig\Extension\MelisViewHelperTwigExtension;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Silex\Api\BootableProviderInterface;
 use Silex\Application;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Twig\TwigFunction;
 
 class MelisServiceProvider implements ServiceProviderInterface, BootableProviderInterface
@@ -78,13 +80,25 @@ class MelisServiceProvider implements ServiceProviderInterface, BootableProvider
             }
         }
         $melisDBOptions = array_reverse($melisDBOptions);
-
         $app['dbs.options'] = $melisDBOptions;
 
         //the block of code below is for adding Melis Zend View Helpers as a Twig Function Extension.
         $app->extend('twig', function($twig, $app) {
             $twig->addExtension( new MelisViewHelperTwigExtension($app));
             return $twig;
+        });
+
+        /**
+         * ROUTING CONFIGURATIONS
+         * Silex routing for Tool Creator.
+         */
+        $app->get('/melis/silex-module-create', function () use ($app) {
+            $melisSilexToolCreatorSvc = new MelisSilexToolCreatorService($app);
+            $melisSilexToolCreatorSvc->createTool();
+
+            return new JsonResponse(array(
+                'success' => true
+            ));
         });
     }
 }

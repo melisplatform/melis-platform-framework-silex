@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <div class="content-cont">
+        <div class="me-heading bg-white border-bottom">
+            <div class="row">
+                <div class="me-hl col-xs-12 col-md-9">
+                    <h1 class="content-heading">{{ 'tr_[tcf-name-trans]_tcf-title'|trans }}</h1>
+                    <p>{{ 'tr_[tcf-name-trans]_tcf-desc'|trans }}</p>
+                </div>
+                <div class="me-hr col-xs-12 col-sm-4 col-md-3">
+                    <button data-toggle="modal" id="[tcf-name-trans]_tool_new_album" class="btn btn-success">
+                        <i class="fa fa-plus"></i> {{ 'tr_[tcf-name-trans]_new_data'|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content innerAll spacing-x2">
+            <div class="bottom">
+                {{ getMelisViewHelpers('melisdatatable', 'createTable', silexTableConfig) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

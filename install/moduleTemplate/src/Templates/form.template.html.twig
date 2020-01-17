@@ -1,0 +1,43 @@
+{% block content %}
+    <div>
+        <div class="modal fade" id="[tcf-name-trans]_modal">
+            <div class="modal-dialog" role="modal">
+                <div class="modal-content" id="id_[tcf-name-trans]_modal_content">
+                    <div class="modal-body padding-none">
+                        <div class="wizard">
+                            <div class="widget widget-tabs widget-tabs-double widget-tabs-responsive margin-none border-none">
+                                <div class="widget-head">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#[tcf-name-trans]_tab"
+                                                              class="glyphicons plus" data-toggle="tab"
+                                                              aria-expanded="true">
+                                                <i></i> Album</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="widget-body innerAll inner-2x">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="[tcf-name-trans]_create_tab_pane">
+                                            <form method="POST" id="[tcf-name-trans]_form">
+                                                [tcf-form-inputs]
+                                                <div align="right">
+                                                    <button data-dismiss="modal" class="btn btn-danger pull-left">
+                                                        <i class="fa fa-times"></i> {{ 'tr_[tcf-name-trans]_close'|trans }}
+                                                    </button>
+                                                    <button type="submit" class="btn btn-success" id="btn-save-theme">
+                                                        <i class="fa fa-save"></i> {{ 'tr_[tcf-name-trans]_save'|trans }}
+                                                    </button>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
