@@ -11,4 +11,6 @@
         'tr_[tcf-name-trans]_action' => 'Action',
         'tr_[tcf-name-trans]_save' => 'Save',
         'tr_[tcf-name-trans]_close' => 'Close',
+        'tr_meliscore_common_yes' => 'YES',
+        'tr_meliscore_common_nope' => 'NO',
     ];

@@ -92,6 +92,10 @@ class MelisSilexToolCreatorService
 
         $toolName = $toolCreatorData['step1']['tcf-name'];
 
+        $tableName = $toolCreatorData['step3']['tcf-db-table'];
+        $sql = "SHOW KEYS FROM `" . $tableName . "` WHERE Key_name = 'PRIMARY'";
+        $primaryKey = $this->app['dbs']['melis']->fetchAssoc($sql)['Column_name'];
+
         $template = __DIR__."/../../install/moduleTemplate/src/Templates/index.template.html.twig";
         $tmpData = file_get_contents($template);
         $tmpData = str_replace('[tcf-name-trans]',strtolower($toolName),$tmpData);
@@ -102,15 +106,42 @@ class MelisSilexToolCreatorService
         $formInputTypes = $toolCreatorData['step5']['tcf-db-table-col-type'];
         $formInputsRendered = '';
         $form = new zendForm();
-        echo "<pre>";
-        print_r($formInputTypes);
-        echo "</pre>";
-        die;
         foreach($formInputTypes as $key => $formInputType){
-            $element = $this->app['melis.services']->getService("FormElementManager")->get($formInputType)->setName($formInputs[$key]);
-            $form->add($formInputType);
-        }
 
+            $formInputType == "Switch" ? $isSwitch = true : $isSwitch = false ;
+            $formInputType == "Switch" ? $formInputTypes[$key] = "text" : true ;
+            $formInputType == "Switch" ? $formInputType = "text" : true ;
+
+            $element = $this->app['melis.services']->getService("FormElementManager")->get($formInputType)->setName($formInputs[$key]);
+            if($formInputs[$key] == $primaryKey){
+                $elemAttr = $element->getAttributes();
+                $elemAttr['readonly'] = 'readonly';
+                $element->setAttributes($elemAttr);
+            }
+
+            $label = '{{ [quote]tr_'.strtolower($toolName).'_'.$formInputs[$key].'[quote]|trans }}';
+            $element->setLabel($label);
+
+            $tooltip = "{{[quote]tr[underscore]".strtolower($toolName)."[underscore]".$formInputs[$key]."[underscore]tcinputdesc[quote]|trans}}";
+            $options = ['tooltip'=>$tooltip];
+            $element->setOptions($options);
+
+            if($isSwitch){
+                $elemOptions = $element->getOptions();
+                $elemOptions["switchOptions"] = [
+                    'label' => '{{ [quote]tr_'.strtolower($toolName).'_'.$formInputs[$key].'[quote]|trans }}',
+                    'label-on' => '{{[quote]tr_meliscore_common_yes[quote]|trans}}',
+                    'label-off' => '{{[quote]tr_meliscore_common_nope[quote]|trans}}',
+                    'icon' => "glyphicon glyphicon-resize-horizontal",
+                ];
+                $elemOptions["value_options"] = [
+                    'on' => 'on',
+                ];
+                $element->setOptions($elemOptions);
+            }
+
+            $form->add($element);
+        }
         $formRow = $this->app['melis.services']->getService("viewhelpermanager")->get('melisFieldCollection');
         $formInputsRendered = $formRow($form);
 
@@ -118,6 +149,8 @@ class MelisSilexToolCreatorService
         $tmpData = file_get_contents($template);
         $tmpData = str_replace('[tcf-name-trans]',strtolower($toolName),$tmpData);
         $tmpData = str_replace('[tcf-form-inputs]',$formInputsRendered,$tmpData);
+        $tmpData = str_replace('[quote]','"',$tmpData);
+        $tmpData = str_replace('[underscore]','_',$tmpData);
         $data = str_replace('[tcf-name]',$toolName,$tmpData);
         $this->createFile($pathToCreate . DIRECTORY_SEPARATOR . "form.template.html.twig",$data);
     }
@@ -254,5 +287,4 @@ class MelisSilexToolCreatorService
         $formRow = $this->app['melis.services']->getService("viewhelpermanager")->get('melisFieldCollection');
         return $formRow($form);
     }
-
 }
