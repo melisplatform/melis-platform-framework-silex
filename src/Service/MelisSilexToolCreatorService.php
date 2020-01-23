@@ -9,6 +9,8 @@
 namespace MelisPlatformFrameworkSilex\Service;
 
 
+use DOMDocument;
+use tidy;
 use Zend\Form\Form as zendForm;
 
 class MelisSilexToolCreatorService
@@ -129,9 +131,9 @@ class MelisSilexToolCreatorService
             if($isSwitch){
                 $elemOptions = $element->getOptions();
                 $elemOptions["switchOptions"] = [
-                    'label' => '{{ [quote]tr_'.strtolower($toolName).'_'.$formInputs[$key].'[quote]|trans }}',
-                    'label-on' => '{{[quote]tr_meliscore_common_yes[quote]|trans}}',
-                    'label-off' => '{{[quote]tr_meliscore_common_nope[quote]|trans}}',
+                    'label' => '{{[quote]tr[underscore]'.strtolower($toolName).'[underscore]'.$formInputs[$key].'[quote]|trans}}',
+                    'label-on' => '{{[quote]tr[underscore]'.strtolower($toolName).'[underscore]common[underscore]yes[quote]|trans}}',
+                    'label-off' => '{{[quote]tr[underscore]'.strtolower($toolName).'[underscore]common[underscore]nope[quote]|trans}}',
                     'icon' => "glyphicon glyphicon-resize-horizontal",
                 ];
                 $elemOptions["value_options"] = [
@@ -145,6 +147,25 @@ class MelisSilexToolCreatorService
         $formRow = $this->app['melis.services']->getService("viewhelpermanager")->get('melisFieldCollection');
         $formInputsRendered = $formRow($form);
 
+        // Beautify $formInputsRendered
+        $config = array(
+            'indent'         => true,
+            'indent-spaces'         => 4,
+            'clean'          => false,
+            'output-xhtml'   => false,
+            'show-body-only' => true,
+            'preserve-entities' => true,
+            'tab-size' => 60,
+            'hide-comments' => false,
+            'drop-proprietary-attributes'   => false,
+            'tidy-mark' => false,
+            'wrap'           => 200);
+        $tidy = new tidy;
+        $tidy->parseString($formInputsRendered, $config, 'utf8');
+        $tidy->cleanRepair();
+        $formInputsRendered = $tidy;
+        $formInputsRendered = str_replace(PHP_EOL,PHP_EOL."\t\t\t\t\t\t\t\t\t\t\t\t",$formInputsRendered);
+
         $template = __DIR__."/../../install/moduleTemplate/src/Templates/form.template.html.twig";
         $tmpData = file_get_contents($template);
         $tmpData = str_replace('[tcf-name-trans]',strtolower($toolName),$tmpData);
@@ -152,6 +173,7 @@ class MelisSilexToolCreatorService
         $tmpData = str_replace('[quote]','"',$tmpData);
         $tmpData = str_replace('[underscore]','_',$tmpData);
         $data = str_replace('[tcf-name]',$toolName,$tmpData);
+
         $this->createFile($pathToCreate . DIRECTORY_SEPARATOR . "form.template.html.twig",$data);
     }
 

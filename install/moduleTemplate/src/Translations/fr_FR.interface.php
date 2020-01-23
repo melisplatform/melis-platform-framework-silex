@@ -11,6 +11,6 @@
         'tr_[tcf-name-trans]_action' => 'Action',
         'tr_[tcf-name-trans]_save' => 'Enregistrer',
         'tr_[tcf-name-trans]_close' => 'Annuler',
-        'tr_meliscore_common_yes' => 'OUI',
-        'tr_meliscore_common_nope' => 'NON',
+        'tr_[tcf-name-trans]_common_yes' => 'OUI',
+        'tr_[tcf-name-trans]_common_nope' => 'NON',
     ];
