@@ -48,9 +48,9 @@ class MelisPlatformToolSilexService
             $left = $filters['left'];
             $center = $filters['center'];
             $right = $filters['right'];
-            $leftDom = '<"fb-dt-left col-xs-12 col-md-4"';
-            $centerDom = '<"fb-dt-center col-xs-12 col-md-4"';
-            $rightDom = '<"fb-dt-right col-xs-12 col-md-4"';
+            $leftDom = '<"fb-dt-left col-12 col-md-4"';
+            $centerDom = '<"fb-dt-center col-12 col-md-4"';
+            $rightDom = '<"fb-dt-right col-12 col-md-4"';
             // datatables predefined filter plugins
             $preDefDTFilter = ['l', 'f'];
             $searchInputClass = '';
@@ -104,7 +104,7 @@ class MelisPlatformToolSilexService
                             			});';
             }
             $tableTop .= $leftDom . '>' . $centerDom . '>' . $rightDom . '>>>';
-            $tableBottom = '<"bottom" t<"pagination-cont clearfix"rip>>';
+            $tableBottom = '<"bottom" t<"pagination-cont"rip>>';
             // check if the filter array configuration is empty
             if (empty($left) && empty($center) && empty($right)) {
                 $sDomStructure = '';
