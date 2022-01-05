@@ -29,7 +29,7 @@
     "symfony/monolog-bridge": "^4.4",
     "symfony/security": "^4.4",
     "symfony/translation": "^4.4",
-    "symfony/twig-bridge": "^3.0",
+    "symfony/twig-bridge": "^4.4",
     "symfony/validator": "^4.4",
     "melisplatform/melis-platform-frameworks": "*"
   },
