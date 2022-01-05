@@ -18,7 +18,7 @@
     "doctrine/dbal": "~2.2",
     "twig/twig": "^2.11",
     "silex/silex": "~2.0",
-    "silex/web-profiler": "~2.0",
+    "symfony/web-profiler-bundle": "^6.0",
     "symfony/asset": "^4.4",
     "symfony/browser-kit": "^4.4",
     "symfony/class-loader": "^3.4",
