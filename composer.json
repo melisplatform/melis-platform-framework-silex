@@ -16,7 +16,6 @@
   ],
   "require": {
     "doctrine/dbal": "^3.3",
-    "twig/twig": "^3.3",
     "silex/silex": "^2.3",
     "silex/web-profiler": "^2.0",
     "symfony/asset": "^5.4",
