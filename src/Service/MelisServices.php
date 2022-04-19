@@ -1,8 +1,8 @@
 <?php
 namespace MelisPlatformFrameworkSilex\Service;
 
-use Zend\Mvc\Application;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\Mvc\Application;
+use Laminas\ServiceManager\ServiceManager;
 
 class MelisServices
 {
