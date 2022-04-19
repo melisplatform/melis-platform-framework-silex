@@ -25,7 +25,6 @@
     "symfony/css-selector": "^5.4",
     "symfony/debug": "^4.4",
     "symfony/form": "^5.4",
-    "symfony/monolog-bridge": "^5.4",
     "symfony/security": "^4.4",
     "symfony/validator": "^5.4",
     "melisplatform/melis-platform-frameworks": "^4.0"
