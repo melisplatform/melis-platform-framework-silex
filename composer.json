@@ -16,10 +16,9 @@
   ],
   "require": {
     "doctrine/dbal": "^3.3",
-    "silex/silex": "^2.3",
-    "silex/web-profiler": "^2.0",
+    "silex/silex": "^2.3",    
     "symfony/browser-kit": "^5.4",
-    "symfony/class-loader": "^3.4", 
+    "symfony/class-loader": "^3.4",     
     "melisplatform/melis-platform-frameworks": "^4.0"
   },
   "config": {
